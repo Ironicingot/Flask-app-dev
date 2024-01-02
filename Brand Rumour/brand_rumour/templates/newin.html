@@ -1,0 +1,29 @@
+
+{% extends "layouts.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+
+        <div class="container">
+            {%for product in products%}
+            <div class="newin1 card">
+                <img src="{{ url_for('serve_product_image', name=product.get_name()) }}" class="image">
+                <span class="product-name">{{ product.get_name() }}</span>
+                <div class="flex">
+                    <span class="product-price"> ${{ product.get_price() }}</span>
+                    <form action="/add_to_wishlist/newin" method="post">
+                        <!-- Add input fields for all of the product information -->
+                        <input type="hidden" name="product_name" value="{{ product.get_name() }}">
+                        <button  class="addtocart" type="submit"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </form>
+                    <form action="/add_to_cart/newin" method="post">
+                        <!-- Add input fields for all of the product information -->
+                        <input type="hidden" name="product_name" value="{{ product.get_name() }}">
+                        <button  class="addtocart" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+

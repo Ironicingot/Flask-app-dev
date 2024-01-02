@@ -1,0 +1,208 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='shoppingcart.css') }}">
+
+    <script>
+            if (history.scrollRestoration){
+                                                history.scrollRestoration = 'manual';
+                                            }
+            else {
+                    window.onbeforeunload = function () {
+                                                            window.scrollTo(0, 0);
+                                                        }
+                }
+
+    </script>
+
+    <header class="header">
+        <section class="flextop">
+            <a href="/">BRAND RUMORS</a>
+            <p><a href="/">Continue Shopping ></a></p>
+        </section>
+    </header>
+
+    <!--Order Summary -->
+    <div class="ordersummary">
+        <p class="bold">Order Summary</p>
+        <div style="display:flex; justify-content:space-between;">
+        <p>SubTotal</p>
+        <p class="total">S$0</p>
+        </div>
+        <div class="black-box"><a id="checkout-button">Checkout Now</a></div>  <!--need to link to checkout page-->
+    </div>
+
+    <!--First box: Location-->
+    <div class="shippingbox">
+        <i class="fa-solid fa-location-dot"></i>
+        Ship to Singapore
+    </div>
+
+    <!--Second box: Other Information-->
+    <div class="white-box">
+        <div class="gray-box">
+            <i class="fa-solid fa-truck-fast"></i> Shipping Fee
+                    <p class="not-bold">Delivery costs $1.50 per transaction</p>
+        </div>
+        <div class="gray-box">
+            <i class="fa-solid fa-percent"></i> Event Promotion
+                    <p class="not-bold">Holiday Sale: Buy 1 Get 1 Free</p>
+        </div>
+    </div>
+
+    <!--Third box: Item Summary-->
+    <table>
+        <tr>
+            <th><input type="checkbox" id="selectAll" onclick="toggleSelection()" value="0"/></th>
+            <th>ALL</th>
+            <th>ITEMS</th>
+            <th>PRICE</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% if products %}
+
+            {% for product in products %}
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox" name="ck" value="{{product.price}}" onclick="updateTotal()" />
+                </td>
+                <td>
+                    <img src="{{ url_for('serve_product_image', name=product['name']) }}" style="width:200px; height: 200px;">
+                </td>
+                <td>
+                    <span class="product-name">{{ product.name}} {{product.size}}</span>
+                </td>
+                <td>
+                    <span class="product-price">${{product.price}}</span>
+                </td>
+                <td>
+                    <div class="wish">
+                        <form action="/addwishlist" method="post">
+                            <!-- Add input fields for all of the product information -->
+                            <input type="hidden" name="product_name" value="{{ product.name }}">
+                            <button  class="wishlist" type="submit"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                        </form>
+                        <a>Save For Later</a>   <!--need to link to wish list-->
+                    </div>
+                </td>
+                <td>
+                    <form action="/deletecart" method="post">
+                        <!-- Add input fields for all of the product information -->
+                        <input type="hidden" name="product_name" value="{{ product.name }}">
+                        <button  class="deletecart" type="submit"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+
+        {% endif %}
+    </table>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        document.getElementById("selectAll").addEventListener("click", function() {
+            if (this.checked) {
+                this.value = 0;
+                this.productID = 0;
+            }
+        });
+
+        function toggleSelection() {
+            let checkboxes = document.getElementsByName("ck");
+            let selectAll = document.getElementById("selectAll");
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].id !== "selectAll") {
+                    checkboxes[i].checked = selectAll.checked;
+                }
+            }
+
+            updateTotal();
+            updateProduct();
+            sendData();  // Add this line to trigger the sendData function
+        }
+
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var totalElem = document.querySelector('.total');
+
+        function toggleSelection() {
+            let checkboxes = document.getElementsByName("ck");
+            let selectAll = document.getElementById("selectAll");
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].id !== "selectAll") {
+                    checkboxes[i].checked = selectAll.checked;
+                }
+            }
+
+            updateTotal();
+            updateProduct();
+        }
+
+        function updateTotal() {
+            let checkboxes = document.getElementsByName("ck");
+            let total = 0;
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked && checkboxes[i].id !== "selectAll") {
+                    total += parseInt(checkboxes[i].value);
+                }
+            }
+
+            document.getElementsByClassName("total")[0].innerHTML = "S$" + Math.floor(total);
+        }
+
+        function updateProduct(){
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let productIds = [];
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked && checkboxes[i].id !== "selectAll") {
+                    let productId = checkboxes[i].parentElement.parentElement.querySelector("input[name='product_id']").value;  // Get the product id from the hidden input field
+                    productIds.push(productId);  // Add the product id to the list
+                }
+            }
+
+            return JSON.stringify(productIds); // Return array of product IDs
+        }
+
+        var stripe = Stripe('pk_test_51MYmqDDNY6CFHiaDP814v4uIRWHBgrcAMw89xWJZdOvUn04Kix4HGpe8biXIIqzW6EOT8icOSy4a9L5jXqZUybcm00X81gGmTi');
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function () {
+        // Check if at least one checkbox is checked
+        var checkboxes = document.getElementsByName("ck");
+        var atLeastOneChecked = false;
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked && checkboxes[i].id !== "selectAll") {
+                atLeastOneChecked = true;
+                break;
+            }
+        }
+
+        if (!atLeastOneChecked) {
+            alert("Please select at least one item before checking out.");
+            return;
+        }
+
+        // Call your server to create a Checkout session
+        fetch('/checkout', {
+            method: 'POST',
+        })
+        .then(response => response.json())
+        .then(session => {
+            return stripe.redirectToCheckout({ sessionId: session.session_ids[0] }); // Use the first session ID for simplicity
+        })
+        .then(result => {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
+{% endblock content %}

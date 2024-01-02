@@ -1,0 +1,61 @@
+.form-control {
+   width: 400px;
+   height: 40px;
+   font-size: 15px;
+   line-height: 2.5;
+}
+
+.form-group{
+  padding: 10px !important;
+}
+
+.center{
+  width: 30%;
+  margin: auto !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#product{
+  padding-left: 25px !important;
+}
+
+#size{
+  padding-left: 25px !important;
+}
+
+
+.button{
+padding: 10px 15px !important;
+padding-left: 360px !important;
+}
+
+.btn-primary{
+padding: 5px 10px !important;
+background-color: black;
+color: white;
+}
+
+.btn-primary:hover{
+padding: 5px 10px !important;
+background-color: gray;
+color: white;
+}
+
+input[type="file"] {
+ height: 40px;
+ width: 400px;
+ font-size: 15px;
+ padding: 2px !important;
+}
+
+label{
+font-size: 13px;
+}
+
+h1{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}

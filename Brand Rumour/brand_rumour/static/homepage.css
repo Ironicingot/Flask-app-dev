@@ -1,0 +1,60 @@
+img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block !important;
+ }
+
+.col{
+        display: flex !important;
+        justify-content: space-between;
+        position: relative;
+  }
+
+.col .blog{
+             padding-left: 5rem !important;
+             padding-right: 3rem !important;
+        }
+
+.col .blog .heading{
+                      align-items: center;
+                 }
+
+.row .heading{
+                  margin-right: 6rem !important;
+           }
+
+.row .latest{
+             display: grid !important;
+             grid-template-columns: repeat(auto-fit, 25rem);
+             gap: 1.3rem;
+             align-items: flex-start;
+             justify-content: center !important;
+             position: relative;
+             margin-right: 3.5rem !important;
+          }
+
+.row .latest .card{
+                  padding: 2rem !important;
+                  padding-top: 0% !important;
+                  padding-left: 0% !important;
+                  background-color: aliceblue;
+                  text-align: center;
+               }
+
+.product-image{
+                  margin-bottom: 1rem !important;
+                  width: 100%;
+                  height: 100%;
+            }
+
+.product-name{
+                  font-size: 2rem;
+                  color: var(--black);
+                  margin: 0.5rem 0 !important;
+           }
+
+.row .offers{
+                  margin-right: 8rem !important;
+                  margin-left: 6rem !important;
+                  padding-bottom: 5rem !important;
+          }

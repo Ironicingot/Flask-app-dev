@@ -1,0 +1,177 @@
+body{
+  padding-top: 12rem !important;
+}
+
+.flextop{
+      justify-content: space-between;
+      position: relative;
+      height: 10rem;
+      background-color: var(--white);
+  }
+
+.flextop a{
+          font-size: 3rem;
+          font-weight: bolder;
+          text-align: center;
+          color: var(--black);
+          margin-left: 5rem !important;
+          padding-left: 0 !important;
+    }
+
+.flextop p{
+      justify-content: flex-end;
+      margin-right: 3rem !important;
+    }
+
+.flextop p a{
+          font-size: 1.8rem;
+          font-weight: normal;
+      }
+
+.flexbottom{
+          display: none !important;
+     }
+
+.alert{
+     margin-top: 3rem !important;
+     margin-bottom: -1rem !important;
+}
+
+/*Order Summary*/
+.ordersummary{
+          background-color: var(--white);
+          width: 370px;
+          height: 180px;
+          margin: 20px !important;
+          padding: 20px !important;
+          box-shadow: var(--box-shadow);
+          border-radius: 0.5rem;
+          float: right;
+          font-size:1.8rem;
+          cursor: pointer;
+          position: relative;
+          top: 20px;
+          margin-right: 5rem !important;
+          margin-top: -0.1rem !important;
+       }
+
+.black-box{
+      background-color: rgb(217, 217, 217);
+      width: 300px;
+      height: 20px;
+      margin: 20px !important;
+      padding: 20px !important;
+      border-radius: 0.5rem;
+      font-size: 1.8rem;
+      text-align: center;
+      padding-bottom: 4rem !important;
+    }
+
+.black-box a{
+          color: white;
+      }
+
+.ordersummary .bold{
+                  font-weight: bold;
+             }
+
+.total{
+          word-spacing: 130px;
+     }
+
+/*First box: Location*/
+.shippingbox{
+          background-color: var(--white);
+          width: 800px;
+          height: 8px;
+          margin: 20px !important;
+          padding: 20px !important;
+          box-shadow: var(--box-shadow);
+          border-radius: 0.5rem;
+          font-size: 1.8rem;
+          padding-bottom: 2.5em !important;
+          margin-left: 5rem !important;
+      }
+
+/*Second box: Other Information*/
+.white-box{
+          background-color: var(--white);
+          width: 800px;
+          height: auto;
+          margin: 20px !important;
+          padding: 20px !important;
+          box-shadow: var(--box-shadow);
+          border-radius: 0.5rem;
+          margin-left: 5rem !important;
+     }
+
+.gray-box{
+      display: inline-block;
+      background-color: var(--light-bg);
+      width: 335px;
+      height: auto;
+      margin: 20px !important;
+      padding: 20px !important;
+      box-shadow: var(--box-shadow);
+      border-radius: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+.gray-box .not-bold{
+                  font-weight: normal;
+                  font-size: 1.4rem;
+             }
+
+/*Third box: Item Summary*/
+table{
+        background-color: var(--white);
+        width: 80rem;
+        height: auto;
+        margin: 20px !important;
+        box-shadow: var(--box-shadow);
+        border-radius: 0.5rem;
+        margin-left: 5rem !important;
+    }
+
+table tr th{
+                font-weight: bold;
+                font-size: 1.3rem;
+                height: 6rem;
+                align-items: center;
+                justify-content: center;
+           }
+
+input[type="checkbox"]{
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid var(--black) !important;
+                     }
+
+table tr td{
+                font-size: 1.3rem;
+                color: var(--black);
+           }
+
+th, td{
+        padding: 1.5rem !important;
+      }
+
+.wish{
+        display: flex !important;
+        gap: 0.5rem;
+     }
+
+.wishlist{
+            font-size: 1.6rem;
+            color: var(--black);
+            cursor: pointer;
+            background-color: white;
+         }
+
+.deletecart{
+                font-size: 1.6rem;
+                color: var(--black);
+                cursor: pointer;
+                background-color: white;
+          }

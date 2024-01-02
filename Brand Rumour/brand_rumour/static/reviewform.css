@@ -1,0 +1,99 @@
+
+.flextop{
+        justify-content: space-between;
+        position: relative;
+        height: 10rem;
+        background-color: var(--white);
+    }
+
+.flextop a{
+            font-size: 3rem;
+            font-weight: bolder;
+            text-align: center;
+            color: var(--black);
+            margin-left: 2rem !important;
+            padding-left: 0 !important;
+      }
+
+.flextop p{
+        justify-content: flex-end;
+        margin-right: 3rem !important;
+      }
+
+.flextop p a{
+            font-size: 1.8rem;
+            font-weight: normal;
+        }
+
+.flexbottom{
+    display: none !important;
+}
+
+
+      /* Add styles for the form container */
+      .form-container {
+        width: 250px;
+        height: 125px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 25px !important;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc !important;
+        display: center !important;
+        flex-direction: column !important;
+        align-items: center;
+      }
+
+      /* Add styles for the form elements */
+      h1, label, input[type="text"], input[type="submit"] {
+        font-size: 15px;
+        width: 100%;
+      }
+
+      /* Add styles for the star rating */
+      .rating {
+        display: flex;
+        align-items: center;
+        margin-top: 1px !important;
+        margin-bottom: 2px !important;
+        margin-left: 8.5px !important;
+      }
+
+      .rating input[type="radio"] {
+        display: none;
+      }
+
+      .rating label {
+        color: #ddd;
+        padding: 0 6px !important;
+        cursor: pointer;
+        font-size: 29px;
+      }
+
+      .rating input[type="radio"]:checked ~ label {
+        color: orange;
+      }
+
+      .rating label:hover,
+      .rating input[type="radio"]:focus + label {
+        color: orange;
+      }
+
+      /* Add styles for the submit button */
+
+      input[type="submit"] {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        padding: 1px 9px !important;
+        font-size: 10px;
+        border: none !important;
+
+        #submit-button[disabled] {
+        background-color: lightgrey;
+        color: white;
+        cursor: not-allowed;
+        }
+        }

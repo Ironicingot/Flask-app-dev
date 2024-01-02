@@ -1,0 +1,61 @@
+
+{% extends "layouts.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='wishlist.css') }}">
+<h1>MY WISH LIST</h1>
+
+ {% if items %}
+    <div class="container">
+      {% for item in items %}
+          <div class="newin1 card">
+
+            <img src="{{ url_for('serve_product_image', name=item.name) }}" class="image">
+            <div class="flex">
+                {{ item.name }}
+                <div class="heartbin">
+                    <form action="/addtocart_fromwishlist" method="post">
+                        <input type="hidden" name="item_name" value="{{ item.name }}">
+                        <button  class="addtocart" type="submit"><i class="fa fa-shopping-cart" id="wishcart" aria-hidden="true"></i></button>
+                    </form>
+
+                    <form action="/deletewishlist" method="post">
+                        <input type="hidden" name="item_name" value="{{ item.name }}">
+                        <button class="deletecart" type="submit"><i class="fa-regular fa-trash-can" id="wishbin" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+        {% else %}
+        <p>You have nothing in your wishlist :)</p>
+         {% endif %}
+
+    <h2>RECOMMENDATIONS FOR YOU</h2>
+
+
+<div class="container">
+    {%for product in products%}
+    <div class="newin1 card">
+        <img src="{{ url_for('serve_product_image', name=product.get_name()) }}" class="image">
+        <div class="flex">
+            <span class="product-name">{{ product.get_name() }}</span>
+            <div class="heartcart">
+                <form action="/add_to_wishlist" method="post">
+                    <!-- Add input fields for all of the product information -->
+                    <input type="hidden" name="product_name" value="{{ product.get_name() }}">
+                    <button class="addtocart" type="submit"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                </form>
+                <form action="/add_to_cart/wishlist" method="post">
+                    <!-- Add input fields for all of the product information -->
+                    <input type="hidden" name="product_name" value="{{ product.get_name() }}">
+                    <button class="addtocart" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

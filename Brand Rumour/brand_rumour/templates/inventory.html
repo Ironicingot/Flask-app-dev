@@ -1,0 +1,46 @@
+{% extends "layouts.html" %}
+{% block content %}
+    {%if products%}
+        <link rel="stylesheet" href="{{ url_for('static', filename='inventory.css') }}">
+        <legend>PRODUCT INVENTORY</legend>
+        <div class="inventory">
+            <table class="table table-image">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+
+                {% for product in products %}
+                    <tbody>
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>${{ product.price }}</td>
+                            <td>{{ product.size }}</td>
+                            <td>{{ product.category }}</td>
+                            <td class="w-25"><img src="{{ url_for('serve_product_image', name=product['name']) }}" alt="None" style="width:200px;height:200px;"></td>
+                            <td><a class="btn btn-primary" onclick="showDeleteConfirmation('{{ product.name }}')">Delete</a></td>
+                            <td><a href="/updateInventoryItem/{{ product.name }}" class="btn btn-primary" id="updateBtn">Update</a></td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+    <script>
+        // JavaScript function to show delete confirmation with product name
+        function showDeleteConfirmation(productName) {
+          // Construct the confirmation message with the product name
+          var confirmationMessage = "Are you sure you want to delete " + productName + "?";
+          // Use JavaScript confirm function with the custom message
+          var isConfirmed = confirm(confirmationMessage);
+          if (isConfirmed) {
+            // Redirect to the delete URL
+            window.location.href = '/deleteInventoryItem/' + productName;
+          }
+        }
+    </script>
+{% endblock %}

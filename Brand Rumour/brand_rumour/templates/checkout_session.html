@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout Session</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <div class="hi">
+  <body>
+    <h1>Checkout Session</h1>
+    <form action="/create_checkout_session/{{total}}/{{productidlist}}" method="post">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_51MYmqDDNY6CFHiaDP814v4uIRWHBgrcAMw89xWJZdOvUn04Kix4HGpe8biXIIqzW6EOT8icOSy4a9L5jXqZUybcm00X81gGmTi"
+        data-amount="{{ total }}"
+        data-name="Brand Rumour"
+        data-description="Shopping Cart Total"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="sgd">
+      </script>
+    </form>
+  </body>
+</div>
+</html>
+
+<style>
+ .hi{
+  background-color : #dfdfdf;
+ }
+
+
+  form {
+    width: 50%;
+    margin: 0 auto !important;
+    text-align: center !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+    justify-content: center !important;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+  }
+
+  .stripe-button {
+    background-color: black;
+    color: #fff;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .stripe-button:hover {
+    background-color: gray;
+  }
+</style>

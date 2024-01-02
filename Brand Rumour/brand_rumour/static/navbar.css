@@ -1,0 +1,120 @@
+.flextop{
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            height: 10rem;
+            background-color: var(--light-bg);
+        }
+
+.flextop a{
+                font-size: 3rem;
+                font-weight: bolder;
+                text-align: center;
+                color: var(--black);
+                margin: auto !important;
+                padding-left: 33rem !important;
+          }
+
+.icons div a{
+                  padding-left: 0 !important;
+                  font-size: 2.5rem;
+            }
+
+.icons{
+            margin-right: 2.6rem !important;
+      }
+
+.icons div{
+                display: inline-block !important;
+                font-size: 2.5rem;
+                color: var(--black);
+                cursor: pointer;
+                margin-left: 4.6rem !important;
+          }
+
+.fa-user{
+            background-color: var(--light-bg);
+        }
+
+.dropdown-content{
+                        display: none;
+                        position: absolute;
+                        background-color: var(--white);
+                        box-shadow: var(--box-shadow);
+                        border-radius: 0.8rem;
+                        list-style: none;
+                        width: 19rem;
+                        height: auto;
+                        margin-left: -0.5rem !important;
+                        z-index: 1;
+                 }
+
+.dropdown-content li{
+                        padding-left: 2rem !important;
+                        padding-top: 0.1rem !important;
+                        padding-bottom: 0.1rem !important;
+                    }
+
+.dropdown-content li a{
+                        font-size: 1.7rem;
+                        color: var(--black);
+                      }
+
+.dropdown-content li:hover{
+                              background-color: var(--light-bg);
+                         }
+
+.dropdown:hover .dropdown-content{
+                                    display: block;
+                                 }
+
+.flexbottom{
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                height: 8rem;
+                background-color: var(--white);
+                box-shadow: var(--box-shadow);
+           }
+
+.navbar{
+            margin-left: 4rem !important;
+       }
+
+.navbar a{
+            margin: 0 2rem !important;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--black);
+         }
+
+.navbar a:hover{
+                    text-decoration: underline !important;
+               }
+
+.searchbox{
+                margin-right: 1.7rem !important;
+          }
+
+.searchbox{
+                box-sizing: border-box;
+                border: 3px solid var(--black) !important;
+                border-radius: 0.5rem;
+                display: flex !important;
+                align-items: center;
+          }
+
+.searchbox .search{
+                        height: 3rem;
+                        font-size: 1.8rem;
+                        margin-left: 1rem !important;
+                  }
+
+.searchbox button{
+                    background-color: var(--white);
+                    font-size: 2rem;
+                    margin-right: 1rem !important;
+                    cursor: pointer;
+                 }

@@ -1,0 +1,53 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+<!-- Home CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+    <section class="col">
+            <!-- blog start -->
+            <div class="blog">
+                <p class="heading">Blog Ads</p>
+                <img src="/static/Images/White Minimalist Blog Fashion Instagram Story.png" alt="" width="500" height="800">
+            </div>
+            <!--blog end -->
+
+            <div class="row">
+                <!-- latest start -->
+                <p class="heading">Latest Products</p>
+                <div class="latest">
+                    <div class="newin1 card">
+                        <img class="product-image" src="/static/Images/photo_6136643586444343329_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">Summer princess dress</span>
+                    </div>
+                    <div class="newin2 card">
+                        <img class="product-image" src="/static/Images/photo_6136643586444343311_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">Oversize T-shirt</span>
+                    </div>
+                    <div class="newin3 card">
+                        <img class="product-image" src="/static/Images/photo_6136643586444343252_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">Long sleeve sweater</span>
+                    </div>
+                    <div class="newin4 card">
+                        <img class="product-image" src="/static/Images/photo_6136643586444343332_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">Camisole</span>
+                    </div>
+                    <div class="newin5 card">
+                        <img class="product-image" src="/static/Images/photo_6141147186071712707_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">Hooded casual suit</span>
+                    </div>
+                    <div class="newin6 card">
+                        <img class="product-image" src="/static/Images/photo_6136643586444343298_x.jpg" alt="" width="300" height="300">
+                        <span class="product-name">New York T-shirt</span>
+                    </div>
+                </div>
+                <!-- latest end -->
+
+                <!-- offers start -->
+                <div class="offers">
+                    <p class="heading">Offers</p>
+                    <img src="/static/Images/Offer Banner.png" alt="" width="800" height="180">
+                </div>
+                <!-- offers end -->
+            </div>
+    </section>
+{% endblock %}

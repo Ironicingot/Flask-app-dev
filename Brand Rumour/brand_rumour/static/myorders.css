@@ -1,0 +1,73 @@
+body{
+    padding-top: 12rem !important;
+  }
+
+.flextop{
+    justify-content: space-between;
+    position: relative;
+    height: 10rem;
+    background-color: var(--white);
+}
+
+.flextop a{
+        font-size: 3rem;
+        font-weight: bolder;
+        text-align: center;
+        color: var(--black);
+        margin-left: 5rem !important;
+        padding-left: 0 !important;
+}
+
+.myorders{
+    display: flex;
+    margin-right: 54% !important;
+}
+
+.flextop p{
+    justify-content: flex-end;
+    margin-right: 3rem !important;
+}
+
+.flextop p a{
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.flexbottom{
+    display: none !important;
+}
+
+table{
+    display: flex;
+    margin: 0 auto !important;
+    width: 90%;
+    height: auto;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 0.8rem;
+}
+
+table tr th{
+    font-weight: bold;
+    font-size: 1.3rem;
+    height: 6rem;
+    align-items: center;
+    justify-content: center;
+}
+
+table tr td{
+    font-size: 1.3rem;
+    color: var(--black);
+}
+
+th, td{
+    padding: 1.5rem !important;
+}
+
+.product-name, .product-price{
+    padding-left: 20rem !important
+}
+
+.price, .item{
+    padding-left: 21rem !important;
+}

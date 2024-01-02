@@ -1,0 +1,51 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='myorders.css') }}">
+
+	<script>
+			if (history.scrollRestoration){
+												history.scrollRestoration = 'manual';
+											}
+			else {
+					window.onbeforeunload = function () {
+															window.scrollTo(0, 0);
+														}
+				}
+	</script>
+
+	<header class="header">
+		<section class="flextop">
+			<a href="/">BRAND RUMORS</a>
+			<div class="myorders">MY ORDERS</div>
+			<p><a href="/">Continue Shopping ></a></p>
+		</section>
+	</header>
+
+
+	<table>
+        <tr>
+            <th>ALL</th>
+            <th class="item">ITEMS</th>
+            <th class="price">PRICE</th>
+        </tr>
+        {% if products %}
+
+            {% for product in products %}
+            <tr>
+                <td>
+                    <img src="{{ url_for('serve_product_image', name=product['name']) }}" style="width:200px; height: 200px;">
+                </td>
+                <td>
+                    <span class="product-name">{{ product.name}} {{product.size}}</span>
+                </td>
+                <td>
+                    <span class="product-price">${{product.price}}</span>
+                </td>
+            </tr>
+            {% endfor %}
+
+        {% endif %}
+    </table>
+
+{% endblock content %}

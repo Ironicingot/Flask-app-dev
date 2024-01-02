@@ -1,0 +1,42 @@
+.alert{
+    margin-top: 2rem !important;
+}
+
+legend{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    padding-bottom: 2rem !important;
+    }
+
+.inventory{
+            background-color: white;
+            margin: 20px !important;
+            padding: 20px !important;
+            box-shadow: var(--box-shadow);
+            border-radius: 1rem;
+}
+
+.btn-primary{
+    padding: 6px 10px !important;
+    color: white;
+    background-color: black;
+}
+
+.btn-primary:hover{
+    padding: 6px 10px !important;
+    background-color: gray;
+    color: white;
+}
+
+td{
+padding: 10px !important;
+font-size: 14px;
+}
+
+th{
+padding-left: 7px !important;
+font-size: 16px;
+}
+
+

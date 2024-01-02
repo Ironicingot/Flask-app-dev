@@ -1,0 +1,90 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='tracking.css') }}">
+
+        <script>
+                if (history.scrollRestoration){
+                                                    history.scrollRestoration = 'manual';
+                                              }
+                else {
+                        window.onbeforeunload = function () {
+                                                                window.scrollTo(0, 0);
+                                                            }
+                    }
+
+        </script>
+
+<header class="header">
+  <section class="flextop">
+    <a href="/">BRAND RUMORS</a>
+    <p style="margin-right:65% !important;"style="margin-right:65% !important;">TRACKING</p>
+    <p><a href="/myorders">Back ></a></p>
+  </section>
+</header>
+
+    <div class="trackingTop">
+
+        <div class="tracking1">
+            <img class="orderPhoto" src="{{ order.photo }}" >
+            <div class="orderNumber01">
+                <p>Order NO.</p>
+                <span class="orderNumber02">{{ order.order_number }}</span>
+                <a href="/copy_order_number?order_number={{ order.order_number }}" style="padding:10px !important;">Copy</a>
+            </div>
+            <br>
+            <div class="orderDate">
+                <p>Estimated Delivery Time</p>
+                <span>{{ estimated_delivery_time.strftime('%d-%m-%Y') }} to {{ estimated_delivery_time2.strftime('%d-%m-%Y') }}</span>
+                <p style="font-size: 12px;"><i class="fas fa-exclamation-circle"></i> The actual delivery time is subject to the official website/notice of the logistics company.</p>
+            </div>
+            <form action="/review">
+              <input type="hidden" name="order_number" value="{{ order.order_number }}">
+              <button type="submit" class="receiveButton">Received</button>
+            </form>
+
+
+        </div>
+
+        <div class="tracking2">
+            <div class="shipping-date">
+                <p>06-01-2023 &nbsp; ⬤</p>
+                <p>06-01-2023 &nbsp; ⬤</p>
+                <p>04-01-2023 &nbsp; ⬤</p>
+                <p>03-01-2023 &nbsp; ⬤</p>
+                <p>02-01-2023 &nbsp; ⬤</p>
+            </div>
+            <div class="status">
+                <p>Delivered</p>
+                <p>Out for Delivery</p>
+                <p>In Transit</p>
+                <p>Processed</p>
+                <p>Arrived at the Local Facility</p>
+            </div>
+        </div>
+
+    </div>
+
+
+<div class="recs">
+    <h1>Recommendations For You</h1>
+<div class="container">
+            {%for product in products%}
+            <div class="newin1 card">
+                <img src="{{ url_for('serve_product_image', name=product.get_name()) }}" style="width:400;height:500;">
+                <div class="flex">
+                    <span class="product-name">{{ product.get_name() }}</span>
+                    <form action="/add_to_wishlist" method="post">
+                        <!-- Add input fields for all of the product information -->
+                        <input type="hidden" name="product_name" value="{{ product.get_name() }}">
+                        <button  class="addtocart" type="submit"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    <a href="/">see more</a>
+</div>
+{% endblock %}
+
+

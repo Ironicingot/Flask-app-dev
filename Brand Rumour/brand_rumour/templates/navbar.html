@@ -1,0 +1,68 @@
+<!-- Navbar CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
+
+<header class="header">
+    <section class="flextop">
+        <a href="{{url_for('homepage')}}">BRAND RUMORS</a>
+        <div class="icons">
+        <div class="dropdown">
+            <div><a id="user" class="fa fa-user"></a></div>
+            {% if current_user.is_authenticated %}
+                {% if current_user.username == "Admin01" %}
+                    <!-- Admin-specific content -->
+                    <ul class="dropdown-content">
+                        <li><a>Welcome, {{ current_user.username }}</a></li>
+                        <li><a href="{{url_for('shoppingcart')}}">Cart</a></li>
+                        <li><a href="{{url_for('wishlist')}}">Wish</a></li>
+                        <li><a href="{{url_for('myorders')}}">My Orders</a></li>
+                        <li><a href="{{url_for('logout')}}">Logout</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="dropdown-content">
+                        <li><a >Welcome, {{ current_user.username }}</a></li>
+                        <li><a href="{{url_for('myorders')}}">My Orders</a></li>
+                        <li><a href="{{url_for('logout')}}">Logout</a></li>
+                        <li><a href="{{url_for('delete_user', user_id=current_user.id)}}">Delete Account</a></li>
+                    </ul>
+                {% endif %}
+            {% else %}
+            <ul class="dropdown-content">
+                <li><a href="{{url_for('register')}}">Register</a></li>
+                <li><a href="{{url_for('login')}}">Login</a></li>
+            </ul>
+            {% endif %}
+        </div>
+
+            {% if current_user.is_authenticated %}
+                {% if current_user.username == "Admin01" %}
+                    <div><a id="heart" class="fa-solid fa-chart-line" href="/uploadproduct"></a></div>
+                    <div><a id="heart" class="fa-solid fa-upload" href="/uploadproduct"></a></div>
+                    <div><a id="inventory" class="fa-solid fa-warehouse" href="/inventory"></a></div>
+                {% else %}
+                    <div><a id="cart" class="fa fa-shopping-cart" href="{{url_for('shoppingcart')}}"></a></div>
+                    <div><a id="heart" class="fa fa-heart" href="{{url_for('wishlist')}}"></a></div>
+                    <div><a id="headphone" class="fa fa-headphones" href="#"></a></div>        <!--Need to add link for chatbot-->
+                {% endif %}
+            {% else %}
+                <div><a id="cart" class="fa fa-shopping-cart" href="{{url_for('login')}}"></a></div>
+                <div><a id="heart" class="fa fa-heart" href="{{url_for('login')}}"></a></div>
+                <div><a id="headphone" class="fa fa-headphones" href="#"></a></div>        <!--Need to add link for chatbot-->
+            {% endif %}
+    </section>
+
+    <section class="flexbottom">
+        <nav class="navbar">
+            <a href="{{url_for('men')}}">MEN</a>
+            <a href="{{url_for('women')}}">WOMEN</a>
+            <a href="{{url_for('kids')}}">KIDS</a>
+            <a href="{{url_for('newin')}}">NEW IN</a>
+        </nav>
+
+        <!-- search bar start -->
+        <form class="searchbox" method="GET" action="{{ url_for('search') }}">
+            <input class="search" type="text" name="query" value="{{ query }}" placeholder="Search" maxlength="25">
+            <button type="submit"><i class="fa fa-search icon"></i></button>
+        </form>
+        <!-- search bar end -->
+    </section>
+</header>
